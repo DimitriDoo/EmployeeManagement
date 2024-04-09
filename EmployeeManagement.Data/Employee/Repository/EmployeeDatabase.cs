@@ -29,5 +29,11 @@ namespace EmployeeManagement.API.Employees.Data.Repository
                 db.Remove(em);
             return db.SaveChanges() > 0;
         }
+
+        public bool UpdateEmployee(Employee employee)
+        {
+            db.Update(employee);
+            return db.SaveChanges() > 0;
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace EmployeeManagement.API.Employees.Business.Service
             Employee newEmployee = Mapper.Map<Employee>(employeeRequestModel);
             newEmployee.EmployeeId = Guid.NewGuid().ToString();
             newEmployee.TimesheetId = Guid.NewGuid().ToString();
+            
             if (!employeeRepo.AddEmployee(newEmployee))
                 throw new Exception();
 
@@ -38,6 +39,20 @@ namespace EmployeeManagement.API.Employees.Business.Service
         public bool DeleteEmployee(string employeeId)
         { 
             return employeeRepo.DeleteEmployee(employeeId);
+        }
+
+        public EmployeeResponse UpdateEmployee(EmployeeRequest employeeRequestModel, string employeeId)
+        {
+            Employee updatedEmployee = employeeRepo.GetEmployeeByEmployeeId(employeeId);
+            Employee mappedEmployee = Mapper.Map<Employee>(employeeRequestModel);
+            updatedEmployee.FirstName = mappedEmployee.FirstName;
+            updatedEmployee.LastName = mappedEmployee.LastName;
+            employeeRepo.UpdateEmployee(updatedEmployee);
+
+            if (!employeeRepo.UpdateEmployee(updatedEmployee))
+                throw new Exception();
+            
+            return Mapper.Map<EmployeeResponse>(updatedEmployee);
         }
     }
 }
