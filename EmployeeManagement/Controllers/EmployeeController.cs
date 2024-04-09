@@ -28,5 +28,11 @@ namespace EmployeeManagement.API.Employees.Presentation.Controllers
             return _EmployeeService.AddEmployee(employeeRequest);
         }
 
+        [HttpDelete("/Employee/{employeeId}")]
+        public bool DeleteEmployee(string employeeId)
+        {
+            return _EmployeeService.DeleteEmployee(employeeId);
+        }
+
     }
 }

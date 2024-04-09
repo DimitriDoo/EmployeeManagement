@@ -35,5 +35,9 @@ namespace EmployeeManagement.API.Employees.Business.Service
             
         }
 
+        public bool DeleteEmployee(string employeeId)
+        { 
+            return employeeRepo.DeleteEmployee(employeeId);
+        }
     }
 }

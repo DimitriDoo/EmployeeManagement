@@ -11,5 +11,6 @@ namespace EmployeeManagement.API.Employees.Data.Repository
     {
         public Employee GetEmployeeByEmployeeId(string id);
         public bool AddEmployee(Employee employee);
+        public bool DeleteEmployee(string employeeId);
     }
 }

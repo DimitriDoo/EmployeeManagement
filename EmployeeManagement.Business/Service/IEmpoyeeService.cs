@@ -13,5 +13,6 @@ namespace EmployeeManagement.API.Employees.Business.Service
     {
         public EmployeeResponse GetEmployee(string employeeId);
         public EmployeeResponse AddEmployee(EmployeeRequest employeeRequestModel);
+        public bool DeleteEmployee(string employeeId);
     }
 }

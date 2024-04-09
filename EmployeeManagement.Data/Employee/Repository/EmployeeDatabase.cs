@@ -22,5 +22,12 @@ namespace EmployeeManagement.API.Employees.Data.Repository
             return db.SaveChanges() > 0;
         }
 
+        public bool DeleteEmployee(string employeeId)
+        {
+            Employee em = db.employees.FirstOrDefault(x => x.EmployeeId == employeeId);
+            if(em != null)
+                db.Remove(em);
+            return db.SaveChanges() > 0;
+        }
     }
 }
