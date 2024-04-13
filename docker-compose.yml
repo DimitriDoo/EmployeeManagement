@@ -1,0 +1,8 @@
+services:
+  empmanagement:
+    build:
+      context: ../EmployeeManagement
+      dockerfile: EmployeeManagement/Dockerfile
+    hostname: empmanagement
+    ports:
+     - "8080:8080"
