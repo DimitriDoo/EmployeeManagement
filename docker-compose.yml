@@ -5,4 +5,31 @@ services:
       dockerfile: EmployeeManagement/Dockerfile
     hostname: empmanagement
     ports:
-     - "8080:8080"
+        - "8080:8080"
+    depends_on:
+        mysql1:
+            condition: service_healthy
+  
+  mysql1:
+    image: mysql:8.3
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=EmployeeManagement
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pwd
+    healthcheck:
+      test:
+        [
+            "CMD",
+            "mysqladmin",
+            "ping",
+            "-uuser",
+            "-ppwd",
+            "-h",
+            "localhost",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
