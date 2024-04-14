@@ -1,4 +1,5 @@
 using AutoMapper;
+using EmployeeManagement.Core.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+EmployeeConfig.config = app.Configuration;
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

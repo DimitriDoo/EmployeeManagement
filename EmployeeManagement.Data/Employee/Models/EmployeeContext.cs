@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmployeeManagement.Core.Config;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
@@ -11,8 +12,6 @@ namespace EmployeeManagement.API.Employees.Data.Models
 {
     public class EmployeeContext : DbContext
     {
-        IConfiguration config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-
         public EmployeeContext()
         { 
             Database.EnsureCreated();
@@ -20,7 +19,7 @@ namespace EmployeeManagement.API.Employees.Data.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseMySQL(EmployeeConfig.config.GetConnectionString("DefaultConnection"));
         }
 
         public DbSet<Employee> employees { get; set; }
