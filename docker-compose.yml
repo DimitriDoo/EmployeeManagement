@@ -4,6 +4,8 @@ services:
       context: ../EmployeeManagement
       dockerfile: EmployeeManagement/Dockerfile
     hostname: empmanagement
+    environment:
+        - ConnectionStrings__DefaultConnection=server=mysql1;port=3306;database=EmployeeManagement;uid=root;password=root
     ports:
         - "8080:8080"
     depends_on:

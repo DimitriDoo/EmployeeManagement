@@ -12,7 +12,7 @@ WORKDIR /src
 COPY ["EmployeeManagement/EmployeeManagement.csproj", "EmployeeManagement/"]
 COPY ["EmployeeManagement.Business/EmployeeManagement.Business.csproj", "EmployeeManagement.Business/"]
 COPY ["EmployeeManagement.Data/EmployeeManagement.Data.csproj", "EmployeeManagement.Data/"]
-COPY ["EmployeeManagement.DTO/EmployeeManagement.DTO.csproj", "EmployeeManagement.DTO/"]
+COPY ["EmployeeManagement.Core/EmployeeManagement.Core.csproj", "EmployeeManagement.Core/"]
 COPY ["EmployeeManagement.Mapping/EmployeeManagement.Mapping.csproj", "EmployeeManagement.Mapping/"]
 RUN dotnet restore "./EmployeeManagement/EmployeeManagement.csproj"
 COPY . .
